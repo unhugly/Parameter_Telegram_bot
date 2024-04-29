@@ -1,0 +1,81 @@
+# Игнорировать каталоги сборки и временные файлы
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.log
+
+# Игнорировать файлы проектов и решений Visual Studio
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+*.sdf
+*.opensdf
+*.opendb
+
+# Игнорировать все файлы в каталоге .vs, который содержит данные пользователя
+.vs/
+
+# Игнорировать кэшированные файлы и папки NuGet
+packages/
+**/[Pp]ackages/*
+*.nupkg
+project.lock.json
+project.assets.json
+project.nuget.cache
+*.nuget.dgspec.json
+*.nuget.g.props
+*.nuget.g.targets
+nuget.exe
+
+# Настройки конфигурации
+appsettings.json
+appsettings.*.json
+secrets.json
+web.config
+*.config
+
+# Игнорировать файлы баз данных
+*.db
+*.sqlite
+*.mdf
+*.ldf
+
+# Игнорировать временные файлы и кэши IDE
+**/._*
+**/.DS_Store
+**/Thumbs.db
+
+# Файлы и папки, связанные с миграцией
+MigrationBackup/
+
+# Файлы отладки
+*.pdb
+
+# Файлы исходного кода
+*.xml
+*.json
+**/AssemblyInfo.cs
+
+# Файлы NuGet V3
+**/*.restore.props
+**/*.restore.targets
+
+# Файлы MSBuild
+**/*.csproj
+**/*.vbproj
+**/*.fsproj
+
+# Файлы сборки
+**/*.dll
+**/*.exe
+**/*.txt
+**/*.cache
+
+# Файлы с информацией о зависимостях
+*.dgspec.json
+*.deps.json
+
+# Файлы состояния инкрементной сборки
+**/_IsIncrementalBuild
+**/build.force
