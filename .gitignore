@@ -41,6 +41,9 @@ web.config
 *.mdf
 *.ldf
 
+# Приватный файл
+FB_ADMINSDK_KEY.json
+
 # Игнорировать временные файлы и кэши IDE
 **/._*
 **/.DS_Store
