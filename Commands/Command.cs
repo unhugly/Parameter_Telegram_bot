@@ -7,12 +7,24 @@ using Telegram.Bot;
 
 namespace TelegramBot_for_parameter.Commands
 {
-    internal abstract class Command
-    {
-        protected readonly ITelegramBotClient _client;
+    public enum CommandState { Initial, AwaitingInput, Completed }
 
-        public Command(ITelegramBotClient botClient) {
+    internal abstract class Command : ICommand
+    {
+        protected ITelegramBotClient _client;
+        public CommandState State { get; set; } // Реализация свойства состояния
+
+        protected Command(ITelegramBotClient botClient)
+        {
             _client = botClient;
+            State = CommandState.Initial;
+        }
+
+        public abstract Task ExecuteAsync(long chatId);
+        public abstract Task<bool> ContinueExecuteAsync(string message, long chatId);
+        public virtual void Reset()
+        {
+            State = CommandState.Initial;
         }
     }
 }

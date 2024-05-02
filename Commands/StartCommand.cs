@@ -12,10 +12,16 @@ namespace TelegramBot_for_parameter
     {
         public StartCommand(ITelegramBotClient botClient) : base(botClient) { }
 
-        public async Task ExecuteAsync(long chatId)
+        public override async Task ExecuteAsync(long chatId)
         {
             string welcomeMessage = "Добро пожаловать! Пользуясь ботом, вы подтверждаете свое согласие на обработку персональных данных и предоставление их третьим лицам. Выберите команду /help для вызова списка доступных команд.";
             await _client.SendTextMessageAsync(chatId, welcomeMessage);
+        }
+
+        public override async Task<bool> ContinueExecuteAsync(string message, long chatId)
+        {
+            await Task.CompletedTask;
+            return false;
         }
     }
 }

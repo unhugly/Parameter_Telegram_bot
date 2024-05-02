@@ -12,7 +12,13 @@ namespace TelegramBot_for_parameter
     {
         public UnknownCommand(ITelegramBotClient botClient) : base(botClient) { }
 
-        public async Task ExecuteAsync(long chatId)
+        public override async Task<bool> ContinueExecuteAsync(string message, long chatId)
+        {
+            await Task.CompletedTask;
+            return false;
+        }
+
+        public override async Task ExecuteAsync(long chatId)
         {
             await _client.SendTextMessageAsync(chatId, "Неизвестная команда, выберите команду /help для вызова списка доступных команд");
         }

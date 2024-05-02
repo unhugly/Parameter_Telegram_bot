@@ -4,16 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Telegram.Bot;
+using TelegramBot_for_parameter.Commands;
 
 namespace TelegramBot_for_parameter
 {
-    internal class HelpCommand : Commands.Command, ICommand
+    internal class HelpCommand : Command, ICommand
     {
         public HelpCommand(ITelegramBotClient botClient) : base(botClient) { }
 
-        public async Task ExecuteAsync(long chatId)
+        public override async Task<bool> ContinueExecuteAsync(string message, long chatId)
         {
-            await _client.SendTextMessageAsync(chatId, "Список доступных команд:\n/help (список команд)\n/advice(случайный совет)");
+            await Task.CompletedTask;
+            return false;
+        }
+
+        public override async Task ExecuteAsync(long chatId)
+        {
+            string helpMessage = "Список доступных команд:\n/help - список команд\n";
+            await _client.SendTextMessageAsync(chatId, helpMessage);
         }
     }
+
+
 }
