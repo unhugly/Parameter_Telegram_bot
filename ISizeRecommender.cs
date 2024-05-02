@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TelegramBot_for_parameter
 {
-    enum Language { English, Russian }
-    internal class Config
+    internal interface ISizeRecommender
     {
-        public Language Lang { get; set; }
+        List<SizeEntry> FromJSON(string filePath);
+        string RecommendSize(int chest, int waist, int hip, int sleeveLength);
     }
 }

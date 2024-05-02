@@ -19,6 +19,7 @@ namespace TelegramBot_for_parameter
             {
                 { "/start", new StartCommand(botClient) },
                 { "/help", new HelpCommand(botClient) },
+                { "/newuser", new NewUserCommand(botClient) },
                 // добавить ещё
             };
         }

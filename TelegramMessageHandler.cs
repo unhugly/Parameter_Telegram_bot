@@ -11,7 +11,7 @@ internal class TelegramMessageHandler
 
     public TelegramMessageHandler(ITelegramBotClient botClient)
     {
-        this.commandHandler = new CommandHandler(botClient); // Создаем экземпляр CommandHandler
+        this.commandHandler = new CommandHandler(botClient);
     }
 
     public async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken cancellationToken)
