@@ -11,13 +11,11 @@ namespace TelegramBot_for_parameter
 {
     internal class TopWearFindOutCommand : Command, ICommand
     {
-        public Action<long> OnComplete; // Делегат для сброса команды в обработчике
-
         public TopWearFindOutCommand(ITelegramBotClient botClient) : base(botClient) { }
 
         public override async Task ExecuteAsync(long chatId)
         {
-            await _client.SendTextMessageAsync(chatId, "Введите обхват груди, талии, бёдер, длину рукавов");
+            await _client.SendTextMessageAsync(chatId, "Введите обхват груди, талии, бёдер\nПример: 90 60 90");
             State = CommandState.AwaitingInput;
         }
 
@@ -26,9 +24,9 @@ namespace TelegramBot_for_parameter
             if (State != CommandState.AwaitingInput) return false;
 
             var inputs = message.Split(' ');
-            if (inputs.Length != 4)
+            if (inputs.Length != 3)
             {
-                await _client.SendTextMessageAsync(chatId, "Пожалуйста, введите ровно четыре числа.");
+                await _client.SendTextMessageAsync(chatId, "Пожалуйста, введите ровно три числа.");
                 return true;
             }
 
@@ -37,13 +35,8 @@ namespace TelegramBot_for_parameter
                 int chest = int.Parse(inputs[0]);
                 int waist = int.Parse(inputs[1]);
                 int hip = int.Parse(inputs[2]);
-                int sleeveLength = int.Parse(inputs[3]);
 
-                ISizeRecommender recommender = new WomenTopWearSizeRecommender("../Women_TopWear_SizeChart.json");
-                var recommendedSize = recommender.RecommendSize(chest, waist, hip, sleeveLength);
-
-                await _client.SendTextMessageAsync(chatId, $"Рекомендуемый размер: {recommendedSize}");
-                //OnComplete?.Invoke(chatId); // Уведомляем обработчик о завершении
+                await _client.SendTextMessageAsync(chatId, $"Рекомендуемый размер: {WomenTopWearSizeRecommender.RecommendSize(chest, waist, hip)}");
                 Reset();
                 return false;
             }

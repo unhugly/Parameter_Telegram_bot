@@ -12,7 +12,7 @@ namespace TelegramBot_for_parameter.Commands
     internal abstract class Command : ICommand
     {
         protected ITelegramBotClient _client;
-        public CommandState State { get; set; } // Реализация свойства состояния
+        public CommandState State { get; set; }
 
         protected Command(ITelegramBotClient botClient)
         {

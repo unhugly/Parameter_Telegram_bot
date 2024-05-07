@@ -7,10 +7,15 @@ using System.Threading.Tasks;
 namespace TelegramBot_for_parameter
 {
     enum Genre { Male, Female }
-    internal class User
+    internal class ClientSideUser
     {
         public string ID { get; }
         public Genre Genre { get; set; }
-        public Optional<Parameter> Params { get; set; }
+
+        public ClientSideUser (string iD, Genre genre)
+        {
+            ID = iD;
+            Genre = genre;
+        }
     }
 }

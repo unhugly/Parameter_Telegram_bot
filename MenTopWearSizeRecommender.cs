@@ -2,19 +2,17 @@
 
 namespace TelegramBot_for_parameter
 {
-    internal class MenTopWearSizeRecommender : ISizeRecommender
+    internal class MenTopWearSizeRecommender
     {
-        private static List<SizeEntry> sizes;
+        private readonly static List<SizeEntry> sizes = FromJSON("../Men_TopWear_SizeChart.json");
 
-        public MenTopWearSizeRecommender(string path) {
-            sizes = FromJSON(path);
-        }
+        public MenTopWearSizeRecommender() { }
 
-        public string RecommendSize(int chest, int waist, int hip, int sleeveLength)
+        public static string RecommendSize(int chest, int waist, int hip)
         {
             throw new System.NotImplementedException();
         }
-        public List<SizeEntry> FromJSON(string filePath)
+        public static List<SizeEntry> FromJSON(string filePath)
         {
             throw new System.NotImplementedException();
         }

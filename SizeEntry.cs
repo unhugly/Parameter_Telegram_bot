@@ -13,6 +13,5 @@ namespace TelegramBot_for_parameter
         public int Chest { get; set; }
         public int Waist { get; set; }
         public int Hip { get; set; }
-        public string SleeveLength { get; set; }
     }
 }

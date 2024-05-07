@@ -20,7 +20,7 @@ namespace TelegramBot_for_parameter
 
         public override async Task ExecuteAsync(long chatId)
         {
-            string helpMessage = "Список доступных команд:\n/help - список команд\n";
+            string helpMessage = "Список доступных команд:\n/help - список команд\n/findout - подобрать размер верхней одежды (жен)";
             await _client.SendTextMessageAsync(chatId, helpMessage);
         }
     }
